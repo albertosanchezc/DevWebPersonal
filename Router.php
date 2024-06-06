@@ -21,11 +21,11 @@ class Router
 
     public function comprobarRutas()
     {
-        session_start();
 
-        $auth = $_SESSION['login'] ?? null;
-        $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
-        $method = $_SERVER['REQUEST_METHOD'];
+        $urlActual = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
+        $metodo = $_SERVER['REQUEST_METHOD'];
+
+        $splitURL = explode('?', $urlActual);
 
         //Arreglo de rutas protegidas
         $rutas_protegidas = [
@@ -44,18 +44,16 @@ class Router
             '/tecnologias/eliminar'
         ];
 
-        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
-        $metodo = $_SERVER['REQUEST_METHOD'];
 
 
         if ($metodo === 'GET') {
-            $fn = $this->rutasGet[$urlActual] ?? null;
+            $fn = $this->rutasGet[$splitURL[0]] ?? null;
         } else {
-            $fn = $this->rutasPOST[$urlActual] ?? null;
+            $fn = $this->rutasPOST[$splitURL] ?? null;
         }
 
         //Proteger las rutas
-        if (in_array($urlActual, $rutas_protegidas) && !$auth) {
+        if (in_array($splitURL, $rutas_protegidas) && !$auth) {
             header('Location: /');
         }
 
