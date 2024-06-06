@@ -1,0 +1,17 @@
+ .seccion {
+     margin-top: $separacion_2;
+     margin-bottom: $separacion_2;
+ }
+.contenido-centrado {
+    max-width: 80rem;
+}
+
+.alinear-derecha{
+    display: flex;
+    justify-content: flex-end;//posiciona a la derecha
+
+}
+
+.w-100{
+    width: 100%;
+}

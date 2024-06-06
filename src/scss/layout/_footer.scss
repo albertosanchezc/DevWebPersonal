@@ -1,0 +1,26 @@
+.footer{
+    padding: $separacion_2  0;
+    background-color: $grisOscuro;
+    margin-bottom: 0;
+    .contenido-footer{
+        padding-top: $separacion_2;
+    }
+    
+    .navegacion{
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+        a{
+            &:hover{
+                color: #21c421;
+            }
+        }
+    }
+
+    .copyright{
+        color : $blanco;
+        text-align: center;
+    }
+
+    
+}
