@@ -24,9 +24,10 @@ class Router
         session_start();
 
         $auth = $_SESSION['login'] ?? null;
-        $currentUrl = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
+        $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
         $method = $_SERVER['REQUEST_METHOD'];
 
+        $splitURL = explode('?', $currentUrl);
         //Arreglo de rutas protegidas
         $rutas_protegidas = [
             '/admin',
@@ -43,27 +44,27 @@ class Router
             '/tecnologias/actualizar',
             '/tecnologias/eliminar'
         ];
-        $urlActual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
+
         $metodo = $_SERVER['REQUEST_METHOD'];
 
 
         if ($metodo === 'GET') {
-            $fn = $this->rutasGet[$urlActual] ?? null;
+            $fn = $this->rutasGet[$splitURL[0]] ?? null;
         } else {
-            $fn = $this->rutasPOST[$urlActual] ?? null;
+            $fn = $this->rutasPOST[$splitURL[0]] ?? null;
         }
 
         //Proteger las rutas
-        if (in_array($urlActual, $rutas_protegidas) && !$auth) {
-            header('Location: /');
-        }
+        // if (in_array($urlActual, $rutas_protegidas) && !$auth) {
+        //     header('Location: /');
+        // }
 
 
         if ($fn) {
             //La URL existe y hay una funcion asociada
             call_user_func($fn, $this);
         } else {
-            echo "Pagina No Encontrada";
+            echo "Pagina No Encontrada o Ruta no válida";
         }
     }
 
