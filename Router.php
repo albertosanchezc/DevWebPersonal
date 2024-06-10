@@ -49,11 +49,11 @@ class Router
         if ($metodo === 'GET') {
             $fn = $this->rutasGet[$splitURL[0]] ?? null;
         } else {
-            $fn = $this->rutasPOST[$splitURL] ?? null;
+            $fn = $this->rutasPOST[$splitURL[0]] ?? null;
         }
 
         //Proteger las rutas
-        if (in_array($splitURL, $rutas_protegidas) && !$auth) {
+        if (in_array($splitURL[0], $rutas_protegidas) && !$auth) {
             header('Location: /');
         }
 
