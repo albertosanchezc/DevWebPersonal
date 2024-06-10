@@ -21,6 +21,9 @@ class Router
 
     public function comprobarRutas()
     {
+        session_start();
+
+        $auth = $_SESSION['login'] ?? null;
 
         $urlActual = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
         $metodo = $_SERVER['REQUEST_METHOD'];
