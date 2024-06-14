@@ -29,11 +29,11 @@
     @include boton($grisOscuro, block);
 }
 
-.boton-morado {
+.boton-morado{
     @include boton($morado, inline-block);
 }
 
-.boton-morado-block {
+.boton-morado-block{
     @include boton($morado, block);
 }
 
