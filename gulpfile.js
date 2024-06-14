@@ -96,3 +96,4 @@ function autoCompile() {
 }
 
 exports.default = parallel(compileSass, compileJS, autoCompile, imgAvif, imageMin, imgWebp, imgSvg);
+exports.build = parallel(compileSass, compileJS, imgAvif, imageMin, imgWebp, imgSvg);

@@ -30,13 +30,18 @@ function tecnologiasSeleccionadas() {
 }
 
 function obtenerTecnologiasSeleccionadas() {
+    if(document.getElementById('tecnologiasSeleccionadas') !== null){
     const inputHidden = document.getElementById('tecnologiasSeleccionadas').value;
 
-    const checkboxes = document.querySelectorAll('.formulario__contenedor-tecnologias input[type="checkbox"]');
+        if(inputHidden == null){
+            const checkboxes = document.querySelectorAll('.formulario__contenedor-tecnologias input[type="checkbox"]');
+    
+            inputHidden.foreach(id => {
+                console.log(id);
+            });
+        }
+    }
 
-    inputHidden.foreach(id => {
-        console.log(id);
-    });
 }
 
 function darkMode() {
@@ -76,26 +81,32 @@ function navegacionResponsive() {
 }
 
 function mostrarMetodosContacto(e) {
-    const contactoDiv = document.querySelector('#contacto');
 
-    if (e.target.value === 'telefono') {
-        contactoDiv.innerHTML = `
-        <label for="telefono">Numero Telefono</label>
-        <input data-cy="input-telefono" type="tel" placeholder="Tu Telefono" id="telefono" name="contacto[telefono]" >
+    if(document.querySelector('#contacto') !== null){
+        const contactoDiv = document.querySelector('#contacto');
+        if(contactoDiv !==null){
+            if (e.target.value === 'telefono') {
+                contactoDiv.innerHTML = `
+                <label for="telefono">Numero Telefono</label>
+                <input data-cy="input-telefono" type="tel" placeholder="Tu Telefono" id="telefono" name="contacto[telefono]" >
+                
+                <p>Elija la fecha y la hora para ser contactado</p>
         
-        <p>Elija la fecha y la hora para ser contactado</p>
-
-        <label for="fecha">Fecha:</label>
-        <input data-cy="input-fecha"  type="date"  id="fecha" name="contacto[fecha]">
-
-        <label for="hora">Hora:</label>
-        <input data-cy="input-hora" type="time"  id="hora" min="09:00" max="18:00" name="contacto[hora]">
-        `;
-    } else {
-        contactoDiv.innerHTML = `
-        <label for="email">E-mail</label>
-        <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" required>
-        `;
+                <label for="fecha">Fecha:</label>
+                <input data-cy="input-fecha"  type="date"  id="fecha" name="contacto[fecha]">
+        
+                <label for="hora">Hora:</label>
+                <input data-cy="input-hora" type="time"  id="hora" min="09:00" max="18:00" name="contacto[hora]">
+                `;
+            } else {
+                contactoDiv.innerHTML = `
+                <label for="email">E-mail</label>
+                <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" required>
+                `;
+            }
+            console.log(e);
+        }
     }
-    console.log(e);
+
+
 }
