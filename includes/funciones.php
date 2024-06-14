@@ -37,7 +37,7 @@ function s($html): string
 function validarTipoContenido($tipo)
 {
     //solo esto se podrá borrar
-    $tipos = ['pagina', 'tecnologia', 'estado', 'categoria'];
+    $tipos = ['pagina', 'tecnologia', 'estado', 'categoria','entrada'];
 
     return in_array($tipo, $tipos);
 }

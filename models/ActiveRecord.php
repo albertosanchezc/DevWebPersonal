@@ -83,7 +83,7 @@ class ActiveRecord
     }
 
     //Eliminar un registro
-    public function eliminar()
+    public function eliminar($ruta=null)
     {
         //ELIMINA LA PROPIEDAD
         $query = "DELETE FROM " . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
@@ -93,7 +93,12 @@ class ActiveRecord
         if ($resultado) {
             //Redireccionar al usuario.
             $this->borrarImagen();
-            header('Location: /admin?resultado=3');
+            if(!$ruta){
+                header('Location: /admin?resultado=3');
+            }
+            else{
+                header("Location: $ruta");
+            }
         }
     }
 

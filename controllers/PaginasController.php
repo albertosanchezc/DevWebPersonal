@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Blog;
 use MVC\Router;
 use Model\Categoria;
 use Model\Estado;
@@ -15,6 +16,7 @@ class PaginasController
     public static function index(Router $router)
     {
         $paginas = Pagina::get(3);
+        $entradas = Blog::get(2);
         $inicio = true;
 
         $categorias = Categoria::all();
@@ -40,6 +42,7 @@ class PaginasController
         $router->render('paginas/index', [
             'paginas' => $paginas,
             'inicio' => $inicio,
+            'entradas' => $entradas,
             'mapaCategorias' => $mapaCategorias,
             'mapaTecnologias' => $mapaTecnologias,
             'mapaEstados' => $mapaEstados
@@ -120,12 +123,20 @@ class PaginasController
 
     public static function blog(Router $router)
     {
-        $router->render('paginas/blog');
+        $entradas = Blog::all();
+
+        $router->render('paginas/blog', [
+            'entradas' => $entradas
+        ]);
     }
 
     public static function entrada(Router $router)
     {
-        $router->render('paginas/entrada');
+        $id = validarORedireccionar('/blog');
+        $entrada = Blog::find($id);
+        $router->render('paginas/entrada',[
+            'entrada' => $entrada
+        ]);
     }
 
     public static function contacto(Router $router)

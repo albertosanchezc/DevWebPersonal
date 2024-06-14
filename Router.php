@@ -44,7 +44,10 @@ class Router
             '/estados/eliminar',
             '/tecnologias/crear',
             '/tecnologias/actualizar',
-            '/tecnologias/eliminar'
+            '/tecnologias/eliminar',
+            '/blog/crear',
+            '/blog/actualizar',
+            '/blog/eliminar'
         ];
 
 

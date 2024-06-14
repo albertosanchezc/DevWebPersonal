@@ -10,12 +10,13 @@
         }
     }
     ?>
-
-    <a href="/proyectos/crear" class="boton boton-verde">Nueva Página</a>
-    <a href="/categorias/crear" class="boton boton-amarillo">Nueva Categoria</a>
-    <a href="/estados/crear" class="boton boton-azul">Nuevo Estado</a>
-    <a href="/tecnologias/crear" class="boton boton-gris">Nueva Tecnología</a>
-
+    <div class="botones">
+        <a href="/proyectos/crear" class="boton boton-verde">Nueva Página</a>
+        <a href="/categorias/crear" class="boton boton-amarillo">Nueva Categoria</a>
+        <a href="/estados/crear" class="boton boton-azul">Nuevo Estado</a>
+        <a href="/tecnologias/crear" class="boton boton-gris">Nueva Tecnología</a>
+        <a href="/blog/crear" class="boton boton-morado">Nueva Entrada</a>
+    </div>
 
 
     <h2>Páginas</h2>
@@ -50,6 +51,38 @@
         </tbody>
     </table>
 
+    <h2>Entradas de Blog</h2>
+    <table class="propiedades">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Imagen</th>
+                <th>Autor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody> <!-- Mostrar los Resultados -->
+            <?php foreach ($entradas as $entrada) { ?>
+                <tr>
+                    <td><?php echo $entrada->id; ?></td>
+                    <td><?php echo $entrada->titulo; ?></td>
+                    <td><img src="/imagenes/<?php echo $entrada->imagen; ?>" class="imagen-tabla"></td>
+                    <td><?php echo $entrada->autor; ?></td>
+                    <td>
+                        <form method="POST" class="w-100" action="/blog/eliminar">
+                            <input type="hidden" name="id" value="<?php echo $entrada->id; ?>">
+                            <input type="hidden" name="tipo" value="entrada">
+
+                            <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="/blog/actualizar?id=<?php echo $entrada->id; ?>" class="boton-amarillo-block">Actualizar</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
     <h2>Categorias</h2>
     <table class="propiedades">
         <thead>

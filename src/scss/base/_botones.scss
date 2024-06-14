@@ -10,7 +10,6 @@
     @include boton($verde, inline-block);
 }
 
-
 .boton-verde-block {
     @include boton($verde, block);
 }
@@ -19,7 +18,6 @@
     @include boton($azul, inline-block);
 }
 
-
 .boton-azul-block {
     @include boton($azul, block);
 }
@@ -27,14 +25,33 @@
     @include boton($grisOscuro, inline-block);
 }
 
-
 .boton-gris-block {
     @include boton($grisOscuro, block);
 }
 
+.boton-morado {
+    @include boton($morado, inline-block);
+}
+
+.boton-morado-block {
+    @include boton($morado, block);
+}
 
 .boton-rojo-block {
     @include boton($rojo, block);
     width: inherit;
 }
 
+.botones{
+    display: grid;
+    margin: auto 5rem;
+
+    @include telefono{
+        gap: 0;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @include tablet{
+        gap: 2rem;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

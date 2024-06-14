@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Blog;
 use Model\Desarrollador;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -19,7 +20,7 @@ class PropiedadController
         $categorias = Categoria::all();
         $estados = Estado::all();
         $tecnologias = Tecnologia::all();
-
+        $entradas = Blog::all();
 
 
         // Crear un mapa de categorías
@@ -33,6 +34,7 @@ class PropiedadController
             'categorias' => $categorias,
             'estados' => $estados,
             'tecnologias' => $tecnologias,
+            'entradas' => $entradas,
             'mapaCategorias' => $mapaCategorias
         ]);
     }

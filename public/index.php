@@ -4,17 +4,20 @@ require_once __DIR__ . '/../includes/app.php';
 
 
 use MVC\Router;
-use Controllers\PropiedadController;
-use Controllers\PaginasController;
-use Controllers\CategoriasController;
-use Controllers\EstadosController;
+use Controllers\BlogController;
 use Controllers\LoginController;
+use Controllers\EstadosController;
+use Controllers\PaginasController;
+use Controllers\PropiedadController;
+use Controllers\CategoriasController;
 use Controllers\TecnologiasController;
 
 
 
 $router = new Router();
 
+
+// Área Privada
 $router->get('/admin', [PropiedadController::class, 'index']);
 $router->get('/proyectos/crear', [PropiedadController::class, 'crear']);
 $router->post('/proyectos/crear', [PropiedadController::class, 'crear']);
@@ -41,6 +44,13 @@ $router->get('/tecnologias/actualizar', [TecnologiasController::class, 'actualiz
 $router->post('/tecnologias/actualizar', [TecnologiasController::class, 'actualizar']);
 $router->post('/tecnologias/eliminar', [TecnologiasController::class, 'eliminar']);
 
+$router->get('/blog/crear', [BlogController::class, 'crear']);
+$router->post('/blog/crear', [BlogController::class, 'crear']);
+$router->get('/blog/actualizar', [BlogController::class, 'actualizar']);
+$router->post('/blog/actualizar', [BlogController::class, 'actualizar']);
+$router->post('/blog/eliminar', [BlogController::class, 'eliminar']);
+
+// Área Pública
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/paginas', [PaginasController::class, 'paginas']);

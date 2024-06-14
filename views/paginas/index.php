@@ -27,46 +27,25 @@
     <section  data-cy="blog" class="blog">
         <h3>Nuestro Blog</h3>
 
-        <article class="entrada-blog">
-            <div class="imagen">
-                <picture>
-                    <source srcset="build/img/blog1.webp" type="image/webp">
-                    <source srcset="build/img/blog1.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/blog1.jpg" alt="Texto Entrada Blog">
-                </picture>
-            </div>
+        <?php foreach($entradas as $entrada){ ?>
+            <article class="entrada-blog">
+                <div class="imagen">
+                    <picture>
+                        <source srcset="/imagenes/<?php echo $entrada->imagen;?>" type="image/webp">
+                        <source srcset="/imagenes/<?php echo $entrada->imagen;?>" type="image/jpeg">
+                        <img loading="lazy" src="/imagenes/<?php echo $entrada->imagen;?>" alt="Texto Entrada Blog">
+                    </picture>
+                </div>
 
-            <div class="texto-entrada">
-                <a href="https://festivalmusicasassgulpdev.netlify.app/">
-                    <h4>Simple Page Application</h4>
-                    <p class="informacion-meta">Escrito el: <span>05/03/2024</span> por <span>Alberto Sánchez Camacho</span></p>
-                </a>
-
-                <p>
-                    Consejos para construir una aplicación de simple página, con el mejor diseño y siguiendo las buenas prácticas
-                </p>
-            </div>
-
-         </article>
-        <article class="entrada-blog">
-            <div class="imagen">
-                <picture>
-                    <source srcset="build/img/blog2.webp" type="image/webp">
-                    <source srcset="build/img/blog2.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/blog2.jpg" alt="Texto Entrada Blog">
-                </picture>
-            </div>
-
-            <div class="texto-entrada">
-                <a href="https://tocgeje.nyc.dom.my.id/">
-                    <h4>Guía para la creción de un panel de administración</h4>
-                    <p class="informacion-meta">Escrito el: <span>05/03/2024</span> por <span>Alberto Sánchez Camacho</span></p>
-                </a>
-
-                <p>
-                    Crea tu panel de administración con MVC usando PHP, JavaScript y MySql </p>
-            </div>
-        </article>
+                <div class="texto-entrada">
+                    <a href="entrada?id=<?php echo $entrada->id;?>">
+                        <h4><?php echo $entrada->titulo;?></h4>
+                        <p class="informacion-meta">Escrito el: <span><?php echo $entrada->creado . " ";?></span>por <span><?php echo $entrada->autor;?></span></p>
+                        <p><?php echo $entrada->descripcion;?></p>
+                    </a>
+                </div>
+            </article>
+            <?php } ?>
     </section>
 
     <section data-cy="testimoniales" class="testimoniales">
