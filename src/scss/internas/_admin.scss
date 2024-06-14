@@ -15,6 +15,19 @@
     }
 }
 
+.botones{
+    display: grid;
+    margin: auto 5rem;
+
+    @include telefono{
+        gap: 0;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @include tablet{
+        gap: 2rem;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
 table.propiedades{
     margin-top: 4rem;
     width: 100%;
