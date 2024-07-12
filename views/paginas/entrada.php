@@ -9,6 +9,11 @@
 
     <p class="informacion-meta">Escrito el: <span><?php echo $entrada->creado . " "; ?></span>por: <span><?php echo $entrada->autor; ?></span></p>
 
+    <section>
+        <a href="/imagenes/<?php echo $entrada->imagen; ?> " class="boton-azul" download >Ver Imagen</a>
+
+    </section>
+
     <div class="resumen-propiedad">
 
         <p><?php echo $entrada->descripcion; ?></p>

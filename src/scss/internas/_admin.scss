@@ -39,10 +39,18 @@ table.propiedades{
             color: $blanco;
             padding: 2rem;
         }
+
     }
     tbody{
         td{
-            text-align: center;
+            @include telefono{
+                display: block;
+                padding: 0.5rem;
+            }
+            @include tablet{
+                display: flex;
+                text-align: center;
+            }
         }
     }
 
