@@ -4,14 +4,15 @@
     <picture>
         <source srcset="/imagenes/<?php echo $entrada->imagen; ?>" type="image/webp">
         <source srcset="/imagenes/<?php echo $entrada->imagen; ?>" type="image/jpeg">
-        <img loading="lazy" src="/imagenes/<?php echo $entrada->imagen; ?>" alt="imagen de la propiedad">
-        <a href="/imagenes/<?php echo $entrada->imagen; ?> " class="boton-azul" download >Ver Imagen</a>
+        <a href="/imagenes/<?php echo $entrada->imagen; ?> " class="boton-azul" download>
+            <img loading="lazy" src="/imagenes/<?php echo $entrada->imagen; ?>" alt="imagen de la propiedad">
+        </a>
 
     </picture>
 
     <p class="informacion-meta">Escrito el: <span><?php echo $entrada->creado . " "; ?></span>por: <span><?php echo $entrada->autor; ?></span></p>
 
- 
+
 
     <div class="resumen-propiedad">
 
