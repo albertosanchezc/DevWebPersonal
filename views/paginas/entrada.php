@@ -5,14 +5,13 @@
         <source srcset="/imagenes/<?php echo $entrada->imagen; ?>" type="image/webp">
         <source srcset="/imagenes/<?php echo $entrada->imagen; ?>" type="image/jpeg">
         <img loading="lazy" src="/imagenes/<?php echo $entrada->imagen; ?>" alt="imagen de la propiedad">
+        <a href="/imagenes/<?php echo $entrada->imagen; ?> " class="boton-azul" download >Ver Imagen</a>
+
     </picture>
 
     <p class="informacion-meta">Escrito el: <span><?php echo $entrada->creado . " "; ?></span>por: <span><?php echo $entrada->autor; ?></span></p>
 
-    <section>
-        <a href="/imagenes/<?php echo $entrada->imagen; ?> " class="boton-azul" download >Ver Imagen</a>
-
-    </section>
+ 
 
     <div class="resumen-propiedad">
 
