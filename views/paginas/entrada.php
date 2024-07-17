@@ -4,9 +4,7 @@
     <picture>
         <source srcset="/imagenes/<?php echo $entrada->imagen; ?>" type="image/webp">
         <source srcset="/imagenes/<?php echo $entrada->imagen; ?>" type="image/jpeg">
-        <a href="/imagenes/<?php echo $entrada->imagen; ?> " class="boton-azul" download>
-            <img loading="lazy" src="/imagenes/<?php echo $entrada->imagen; ?>" alt="imagen de la propiedad">
-        </a>
+        <img loading="lazy" src="/imagenes/<?php echo $entrada->imagen; ?>" alt="imagen de la propiedad">
 
     </picture>
 
@@ -17,6 +15,8 @@
     <div class="resumen-propiedad">
 
         <p><?php echo $entrada->descripcion; ?></p>
+        <a class="boton boton-azul" href="/imagenes/<?php echo $entrada->imagen; ?>" download>Descargar</a>
+
 
     </div>
 </main>
