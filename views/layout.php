@@ -77,6 +77,7 @@ if(!isset($inicio)){
         </div>
 
         <p data-cy="copyright" class="copyright">Todos los derechos Reservados <?php echo date('Y')?>&copy;</p>
+        <p class="correo">devwebpersonal@gmail.com</p>
     </footer>
 
     <?php echo $script ?? ''; ?>
