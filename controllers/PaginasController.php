@@ -15,7 +15,7 @@ class PaginasController
 
     public static function index(Router $router)
     {
-        $paginas = Pagina::get(3);
+        $paginas = Pagina::getDesc(6);
         $entradas = Blog::get(2);
         $inicio = true;
 
@@ -56,7 +56,7 @@ class PaginasController
 
     public static function paginas(Router $router)
     {
-        $paginas = Pagina::all();
+        $paginas = Pagina::allDesc();
         $categorias = Categoria::all();
         $estados = Estado::all();
         $tecnologias = Tecnologia::all();

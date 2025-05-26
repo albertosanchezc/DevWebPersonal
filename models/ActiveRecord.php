@@ -83,7 +83,7 @@ class ActiveRecord
     }
 
     //Eliminar un registro
-    public function eliminar($ruta=null)
+    public function eliminar($ruta = null)
     {
         //ELIMINA LA PROPIEDAD
         $query = "DELETE FROM " . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
@@ -93,10 +93,9 @@ class ActiveRecord
         if ($resultado) {
             //Redireccionar al usuario.
             $this->borrarImagen();
-            if(!$ruta){
+            if (!$ruta) {
                 header('Location: /admin?resultado=3');
-            }
-            else{
+            } else {
                 header("Location: $ruta");
             }
         }
@@ -169,11 +168,29 @@ class ActiveRecord
         return $resultado;
     }
 
+    public static function allDesc()
+    {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC ";
+
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
+
     //Obtiene determinado numero de registos
     public static function get($cantidad)
     {
         $query = "SELECT * FROM " . static::$tabla . " LIMIT " . $cantidad;
 
+
+        $resultado = self::consultarSQL($query);
+
+        return $resultado;
+    }
+
+    public static function getDesc($cantidad)
+    {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC " . " LIMIT " . $cantidad ;
 
         $resultado = self::consultarSQL($query);
 
@@ -190,17 +207,16 @@ class ActiveRecord
         return array_shift($resultado);
     }
 
-        //Busca un registro por su txt
-        public static function findtt($c ,$t)
-        {
-            $query = "SELECT * FROM " . static::$tabla . " WHERE $c = '$t'";
+    //Busca un registro por su txt
+    public static function findtt($c, $t)
+    {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE $c = '$t'";
 
-            $resultado = self::consultarSQL($query);
-            $resultado = array_shift($resultado);
-            return $resultado->id;
+        $resultado = self::consultarSQL($query);
+        $resultado = array_shift($resultado);
+        return $resultado->id;
+    }
 
-        }
-    
 
     public static function consultarSQL($query)
     {
@@ -208,7 +224,7 @@ class ActiveRecord
         $resultado = self::$db->query($query);
         //Iterar los resultados
         $array = [];
-        
+
         while ($registro = $resultado->fetch_assoc()) {
             $array[] = static::crearObjeto($registro);
         }

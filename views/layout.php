@@ -78,6 +78,8 @@ if(!isset($inicio)){
 
         <p data-cy="copyright" class="copyright">Todos los derechos Reservados <?php echo date('Y')?>&copy;</p>
         <p class="correo">devwebpersonal@gmail.com</p>
+        <p class="correo">albertosanchezc98@gmail.com</p>
+        <p class="correo">4641230877</p>
     </footer>
 
     <?php echo $script ?? ''; ?>
